@@ -5,15 +5,15 @@ using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Update;
 
-internal sealed class UpdateWorkspaceCommandHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateWorkspaceCommand, WorkspaceDto>
+internal sealed class UpdateWorkspaceHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateWorkspaceCommand, WorkspaceDto>
 {
     public async Task<WorkspaceDto> Handle(UpdateWorkspaceCommand request, CancellationToken cancellationToken)
     {
-        var workspace = await workspaceRepository.GetByIdAsync(request.WorkspaceId, cancellationToken);
+        var workspace = await workspaceRepository.GetByIdAsync(request.Id, cancellationToken);
 
         if (workspace is null)
         {
-            throw new WorkspaceNotFoundException(request.WorkspaceId);
+            throw new WorkspaceNotFoundException(request.Id);
         }
 
         workspace.UpdateName(request.Name);

@@ -5,7 +5,7 @@ using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Create;
 
-internal sealed class CreateWorkspaceCommandHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork) : ICommandHandler<CreateWorkspaceCommand, WorkspaceDto>
+internal sealed class CreateWorkspaceHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork) : ICommandHandler<CreateWorkspaceCommand, WorkspaceDto>
 {
     public async Task<WorkspaceDto> Handle(CreateWorkspaceCommand request, CancellationToken cancellationToken)
     {

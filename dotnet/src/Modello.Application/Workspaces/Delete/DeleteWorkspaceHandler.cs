@@ -5,11 +5,11 @@ using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Delete;
 
-internal sealed class DeleteWorkspaceCommandHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork, IMediator mediator) : ICommandHandler<DeleteWorkspaceCommand, Unit>
+internal sealed class DeleteWorkspaceHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork, IMediator mediator) : ICommandHandler<DeleteWorkspaceCommand, Unit>
 {
     public async Task<Unit> Handle(DeleteWorkspaceCommand request, CancellationToken cancellationToken)
     {
-        var workspace = await workspaceRepository.GetByIdAsync(request.WorkspaceId, cancellationToken);
+        var workspace = await workspaceRepository.GetByIdAsync(request.Id, cancellationToken);
 
         if (workspace is null)
         {
