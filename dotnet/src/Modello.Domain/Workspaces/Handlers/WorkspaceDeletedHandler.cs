@@ -10,3 +10,4 @@ internal sealed class WorkspaceDeletedHandler(ILogger<WorkspaceDeletedHandler> l
         return Task.CompletedTask;
     }
 }
+

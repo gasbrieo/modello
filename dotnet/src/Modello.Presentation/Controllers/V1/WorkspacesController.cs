@@ -10,10 +10,10 @@ namespace Modello.Presentation.Controllers.V1;
 public sealed class WorkspacesController(IMediator mediator) : BaseController
 {
     [HttpGet]
-    public async Task<IActionResult> ListWorkspaces([FromQuery] ListWorkspacesRequest request)
+    public async Task<IActionResult> ListWorkspaces([FromQuery] ListWorkspacesRequest request, CancellationToken cancellationToken)
     {
         var query = new ListWorkspacesQuery(request.PageNumber, request.PageSize);
-        var result = await mediator.Send(query);
+        var result = await mediator.Send(query, cancellationToken);
         return Ok(result);
     }
 

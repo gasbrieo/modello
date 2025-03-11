@@ -5,13 +5,13 @@ using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Create;
 
-internal sealed class CreateWorkspaceHandler(IWorkspaceRepository workspaceRepository, IUnitOfWork unitOfWork) : ICommandHandler<CreateWorkspaceCommand, WorkspaceDto>
+internal sealed class CreateWorkspaceHandler(IWorkspaceRepository repository, IUnitOfWork unitOfWork) : ICommandHandler<CreateWorkspaceCommand, WorkspaceDto>
 {
     public async Task<WorkspaceDto> Handle(CreateWorkspaceCommand request, CancellationToken cancellationToken)
     {
         var workspace = new Workspace(request.Name);
 
-        await workspaceRepository.AddAsync(workspace, cancellationToken);
+        await repository.AddAsync(workspace, cancellationToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return new WorkspaceDto(workspace.Id, workspace.Name);

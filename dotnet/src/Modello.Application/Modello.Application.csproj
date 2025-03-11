@@ -7,7 +7,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Modello.Domain\Modello.Domain.csproj" />
+		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+		<InternalsVisibleTo Include="Modello.UnitTests" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Modello.Domain\Modello.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

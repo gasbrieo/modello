@@ -2,9 +2,9 @@
 
 namespace Modello.Domain.Workspaces.Exceptions;
 
-public sealed class WorkspaceNotFoundException : BadRequestException
+public sealed class WorkspaceNotFoundException : NotFoundException
 {
-    public WorkspaceNotFoundException(Guid workspaceId) : base("Workspace not found.", $"The workspace with the identifier '{workspaceId}' was not found.")
+    public WorkspaceNotFoundException() : base("Workspace not found.", "The workspace with the provided identifier was not found.")
     {
     }
 }

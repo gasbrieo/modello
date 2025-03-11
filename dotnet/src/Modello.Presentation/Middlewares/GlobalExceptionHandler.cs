@@ -1,33 +1,9 @@
 ﻿using Modello.Domain.Common.Exceptions;
+using Modello.Presentation.Responses;
 
 namespace Modello.Presentation.Middlewares;
 
-public class ErrorItem(string error, string detail)
-{
-    public string Error { get; } = error;
-    public string Detail { get; } = detail;
-}
-
-public class ErrorResponse(string instance, string traceId)
-{
-    public string Instance { get; } = instance;
-    public string TraceId { get; } = traceId;
-    public ICollection<ErrorItem> Errors { get; } = [];
-
-    public static ErrorResponse FromContext(HttpContext httpContext)
-    {
-        return new(httpContext.Request.Path, httpContext.TraceIdentifier);
-    }
-
-    public ErrorResponse AddError(ErrorItem error)
-    {
-        Errors.Add(error);
-        return this;
-    }
-}
-
-
-public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger, ProblemDetailsFactory problemDetailsFactory) : IExceptionHandler
+public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {

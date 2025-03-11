@@ -23,3 +23,10 @@ if (app.Environment.IsDevelopment())
 app.UseExceptionHandler(_ => { });
 
 await app.RunAsync();
+
+public partial class Program
+{
+    protected Program()
+    {
+    }
+}
