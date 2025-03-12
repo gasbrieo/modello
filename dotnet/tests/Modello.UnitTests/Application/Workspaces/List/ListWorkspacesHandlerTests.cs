@@ -1,4 +1,5 @@
 ﻿using Modello.Application.Common.Pagination;
+using Modello.Application.Common.Results;
 using Modello.Application.Workspaces;
 using Modello.Application.Workspaces.List;
 
@@ -28,7 +29,9 @@ public class ListWorkspacesHandlerTests
         var result = await _handler.Handle(query, cancellationToken);
 
         // Assert
-        Assert.Equal(pagedList, result);
+        Assert.Equal(ResultStatus.Ok, result.Status);
+        Assert.NotNull(result.Value);
+        Assert.Equal(pagedList, result.Value);
 
         _serviceMock.Verify(serv => serv.ListAsync(query, cancellationToken), Times.Once);
     }

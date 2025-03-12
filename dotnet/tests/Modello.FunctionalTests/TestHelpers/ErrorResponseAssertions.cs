@@ -17,19 +17,13 @@ public static class ErrorResponseAssertions
         return new ErrorResponseValidator(errors);
     }
 
-    public class ErrorResponseValidator(ErrorItem[] errors)
+    public class ErrorResponseValidator(string[] errors)
     {
-        private readonly ErrorItem[] _errors = errors;
+        private readonly string[] _errors = errors;
 
         public ErrorResponseValidator WithError(string expectedDetail)
         {
-            Assert.Contains(_errors, e => e.Error == expectedDetail);
-            return this;
-        }
-
-        public ErrorResponseValidator WithDetail(string expectedDetail)
-        {
-            Assert.Contains(_errors, e => e.Detail == expectedDetail);
+            Assert.Contains(_errors, e => e == expectedDetail);
             return this;
         }
     }

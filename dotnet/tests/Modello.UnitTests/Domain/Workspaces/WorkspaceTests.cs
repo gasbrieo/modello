@@ -17,4 +17,18 @@ public class WorkspaceTests
         Assert.Equal(name, workspace.Name);
         Assert.NotEqual(Guid.Empty, workspace.Id);
     }
+
+    [Fact]
+    public void UpdateName_ShouldSetName()
+    {
+        // Arrange
+        var workspace = new Workspace("Work");
+        var newName = "Study";
+
+        // Act
+        workspace.UpdateName(newName);
+
+        // Assert
+        Assert.Equal(newName, workspace.Name);
+    }
 }

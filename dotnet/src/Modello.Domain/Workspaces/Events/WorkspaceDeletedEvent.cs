@@ -1,4 +1,4 @@
 ﻿namespace Modello.Domain.Workspaces.Events;
 
-public record WorkspaceDeletedEvent(Guid Id) : INotification;
+public sealed record WorkspaceDeletedEvent(Guid Id) : INotification;
 

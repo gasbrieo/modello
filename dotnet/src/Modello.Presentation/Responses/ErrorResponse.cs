@@ -4,7 +4,7 @@ public class ErrorResponse
 {
     public string Instance { get; set; } = string.Empty;
     public string TraceId { get; set; } = string.Empty;
-    public ICollection<ErrorItem> Errors { get; set; } = [];
+    public IEnumerable<string> Errors { get; set; } = [];
 
     public static ErrorResponse FromContext(HttpContext httpContext)
     {
@@ -15,9 +15,9 @@ public class ErrorResponse
         };
     }
 
-    public ErrorResponse AddError(ErrorItem error)
+    public ErrorResponse SetErrors(params IEnumerable<string> errors)
     {
-        Errors.Add(error);
+        Errors = errors;
         return this;
     }
 }

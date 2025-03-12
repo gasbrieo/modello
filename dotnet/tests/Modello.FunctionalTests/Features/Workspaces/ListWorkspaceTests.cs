@@ -47,8 +47,7 @@ public class ListWorkspaceTests(CustomWebApplicationFactory factory) : IClassFix
         Assert.NotNull(listResult);
 
         listResult.ShouldHaveValidationError()
-            .WithError("PageNumber must be greater than zero.")
-            .WithDetail("The page number must be greater than zero.");
+            .WithError("PageNumber must be greater than zero.");
     }
 
     [Fact]
@@ -66,7 +65,6 @@ public class ListWorkspaceTests(CustomWebApplicationFactory factory) : IClassFix
         Assert.NotNull(listResult);
 
         listResult.ShouldHaveValidationError()
-            .WithError("PageSize must be greater than zero.")
-            .WithDetail("The page size must be greater than zero.");
+            .WithError("PageSize must be greater than zero.");
     }
 }

@@ -45,8 +45,7 @@ public class DeleteWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
         Assert.NotNull(deleteResult);
 
         deleteResult.ShouldHaveValidationError()
-            .WithError("Id must not be empty.")
-            .WithDetail("The identifier of the workspace cannot be empty.");
+            .WithError("Id must not be empty.");
     }
 
     [Fact]

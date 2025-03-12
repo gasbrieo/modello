@@ -1,4 +1,5 @@
-﻿using Modello.Application.Workspaces.Create;
+﻿using Modello.Application.Common.Results;
+using Modello.Application.Workspaces.Create;
 using Modello.Domain.Common.Interfaces;
 using Modello.Domain.Workspaces;
 using Modello.Domain.Workspaces.Repositories;
@@ -27,9 +28,10 @@ public class CreateWorkspaceHandlerTests
         var result = await _handler.Handle(command, cancellationToken);
 
         // Assert
-        Assert.NotNull(result);
-        Assert.NotEqual(Guid.Empty, result.Id);
-        Assert.Equal(command.Name, result.Name);
+        Assert.Equal(ResultStatus.Ok, result.Status);
+        Assert.NotNull(result.Value);
+        Assert.NotEqual(Guid.Empty, result.Value.Id);
+        Assert.Equal(command.Name, result.Value.Name);
 
         _repositoryMock.Verify(repo => repo.AddAsync(It.IsAny<Workspace>(), cancellationToken), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(cancellationToken), Times.Once);

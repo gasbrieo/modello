@@ -46,8 +46,7 @@ public class GetWorkspaceTests(CustomWebApplicationFactory factory) : IClassFixt
         Assert.NotNull(getResult);
 
         getResult.ShouldHaveValidationError()
-            .WithError("Id must not be empty.")
-            .WithDetail("The identifier of the workspace cannot be empty.");
+            .WithError("Id must not be empty.");
     }
 
     [Fact]
@@ -63,9 +62,5 @@ public class GetWorkspaceTests(CustomWebApplicationFactory factory) : IClassFixt
         // Assert
         Assert.Equal(HttpStatusCode.NotFound, getResponse.StatusCode);
         Assert.NotNull(getResult);
-
-        getResult.ShouldHaveValidationError()
-            .WithError("Workspace not found.")
-            .WithDetail("The workspace with the provided identifier was not found.");
     }
 }

@@ -56,8 +56,7 @@ public class UpdateWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
         Assert.NotNull(result);
 
         result.ShouldHaveValidationError()
-            .WithError("Id must not be empty.")
-            .WithDetail("The identifier of the workspace cannot be empty.");
+            .WithError("Id must not be empty.");
     }
 
     [Fact]
@@ -76,8 +75,7 @@ public class UpdateWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
         Assert.NotNull(updateResult);
 
         updateResult.ShouldHaveValidationError()
-            .WithError("Name must not be empty.")
-            .WithDetail("The name of the workspace cannot be empty or contain only white spaces.");
+            .WithError("Name must not be empty.");
     }
 
     [Fact]
@@ -94,9 +92,5 @@ public class UpdateWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
         // Assert
         Assert.Equal(HttpStatusCode.NotFound, updateResponse.StatusCode);
         Assert.NotNull(updateResult);
-
-        updateResult.ShouldHaveValidationError()
-            .WithError("Workspace not found.")
-            .WithDetail("The workspace with the provided identifier was not found.");
     }
 }

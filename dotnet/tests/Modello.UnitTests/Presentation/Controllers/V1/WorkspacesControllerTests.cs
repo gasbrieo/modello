@@ -1,4 +1,5 @@
 ﻿using Modello.Application.Common.Pagination;
+using Modello.Application.Common.Results;
 using Modello.Application.Workspaces;
 using Modello.Application.Workspaces.Create;
 using Modello.Application.Workspaces.Delete;
@@ -115,7 +116,7 @@ public class WorkspacesControllerTests
         var id = Guid.NewGuid();
         var cancellationToken = CancellationToken.None;
 
-        _mediatorMock.Setup(m => m.Send(It.IsAny<DeleteWorkspaceCommand>(), cancellationToken)).ReturnsAsync(Unit.Value);
+        _mediatorMock.Setup(m => m.Send(It.IsAny<DeleteWorkspaceCommand>(), cancellationToken)).ReturnsAsync(Result.Success());
 
         // Act
         var result = await _controller.DeleteWorkspace(id, cancellationToken);

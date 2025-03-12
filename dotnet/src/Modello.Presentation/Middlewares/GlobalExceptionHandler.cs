@@ -1,5 +1,4 @@
-﻿using Modello.Domain.Common.Exceptions;
-using Modello.Presentation.Responses;
+﻿using Modello.Presentation.Responses;
 
 namespace Modello.Presentation.Middlewares;
 
@@ -12,8 +11,6 @@ public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logge
         var response = exception switch
         {
             ValidationException validationException => HandleValidationException(validationException, httpContext),
-            BadRequestException badRequestException => HandleBadRequestException(badRequestException, httpContext),
-            NotFoundException notFoundException => HandleNotFoundException(notFoundException, httpContext),
             _ => HandleException(exception, httpContext)
         };
 
@@ -27,31 +24,7 @@ public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logge
         httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
 
         var response = ErrorResponse.FromContext(httpContext);
-
-        foreach (var error in exception.Errors)
-        {
-            response.AddError(new ErrorItem(error.ErrorCode, error.ErrorMessage));
-        }
-
-        return response;
-    }
-
-    private static ErrorResponse HandleBadRequestException(BadRequestException exception, HttpContext httpContext)
-    {
-        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
-
-        var response = ErrorResponse.FromContext(httpContext);
-        response.AddError(new ErrorItem(exception.Error, exception.Detail));
-
-        return response;
-    }
-
-    private static ErrorResponse HandleNotFoundException(NotFoundException exception, HttpContext httpContext)
-    {
-        httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-
-        var response = ErrorResponse.FromContext(httpContext);
-        response.AddError(new ErrorItem(exception.Error, exception.Detail));
+        response.SetErrors(exception.Errors.Select(e => e.ErrorCode));
 
         return response;
     }
@@ -63,7 +36,7 @@ public sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logge
         httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
         var response = ErrorResponse.FromContext(httpContext);
-        response.AddError(new ErrorItem("Internal Server Error", "An unexpected error occurred. Please, try again later."));
+        response.SetErrors("Internal Server Error");
 
         return response;
     }

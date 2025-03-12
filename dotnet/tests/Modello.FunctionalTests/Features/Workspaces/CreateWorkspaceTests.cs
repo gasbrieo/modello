@@ -49,7 +49,6 @@ public class CreateWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
         Assert.NotNull(createResult);
 
         createResult.ShouldHaveValidationError()
-            .WithError("Name must not be empty.")
-            .WithDetail("The name of the workspace cannot be empty or contain only white spaces.");
+            .WithError("Name must not be empty.");
     }
 }

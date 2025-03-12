@@ -1,4 +1,5 @@
-﻿using Modello.Application.Workspaces.Delete;
+﻿using Modello.Application.Common.Results;
+using Modello.Application.Workspaces.Delete;
 using Modello.Domain.Common.Interfaces;
 using Modello.Domain.Workspaces;
 using Modello.Domain.Workspaces.Events;
@@ -29,9 +30,11 @@ public class DeleteWorkspaceHandlerTests
         _repositoryMock.Setup(repo => repo.GetByIdAsync(command.Id, cancellationToken)).ReturnsAsync(workspace);
 
         // Act
-        await _handler.Handle(command, cancellationToken);
+        var result = await _handler.Handle(command, cancellationToken);
 
         // Assert
+        Assert.Equal(ResultStatus.Ok, result.Status);
+
         _repositoryMock.Verify(repo => repo.GetByIdAsync(command.Id, cancellationToken), Times.Once);
         _repositoryMock.Verify(repo => repo.DeleteAsync(It.IsAny<Workspace>(), cancellationToken), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(cancellationToken), Times.Once);
@@ -48,9 +51,11 @@ public class DeleteWorkspaceHandlerTests
         _repositoryMock.Setup(repo => repo.GetByIdAsync(command.Id, cancellationToken)).ReturnsAsync((Workspace?)null);
 
         // Act
-        await _handler.Handle(command, cancellationToken);
+        var result = await _handler.Handle(command, cancellationToken);
 
         // Assert
+        Assert.Equal(ResultStatus.Ok, result.Status);
+
         _repositoryMock.Verify(repo => repo.GetByIdAsync(command.Id, cancellationToken), Times.Once);
         _repositoryMock.Verify(repo => repo.DeleteAsync(It.IsAny<Workspace>(), It.IsAny<CancellationToken>()), Times.Never);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Never);

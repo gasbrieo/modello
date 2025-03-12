@@ -1,4 +1,5 @@
 ﻿using Modello.Application.Common.Behaviors;
+using Modello.Domain;
 
 namespace Modello.Presentation.Configurations;
 
@@ -9,7 +10,7 @@ public static class MediatrConfigs
         var assemblies = new[]
         {
             typeof(Application.AssemblyReference).Assembly,
-            typeof(Domain.AssemblyReference).Assembly
+            typeof(IDomainMarker).Assembly
         };
 
         return services
