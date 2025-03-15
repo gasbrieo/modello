@@ -23,11 +23,3 @@ if (app.Environment.IsDevelopment())
 app.UseExceptionHandler(_ => { });
 
 await app.RunAsync();
-
-[ExcludeFromCodeCoverage]
-public partial class Program
-{
-    protected Program()
-    {
-    }
-}
