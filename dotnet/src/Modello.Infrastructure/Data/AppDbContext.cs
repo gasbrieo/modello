@@ -1,5 +1,4 @@
-﻿using Modello.Domain.Common.Interfaces;
-using Modello.Domain.Workspaces;
+﻿using Modello.Domain.Workspaces;
 
 namespace Modello.Infrastructure.Data;
 

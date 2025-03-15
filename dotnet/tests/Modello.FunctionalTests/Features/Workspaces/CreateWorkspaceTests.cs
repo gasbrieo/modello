@@ -1,8 +1,6 @@
-﻿using System.Net.Http.Json;
-using Modello.Application.Workspaces;
+﻿using Modello.Application.Workspaces;
 using Modello.FunctionalTests.TestHelpers;
 using Modello.Presentation.Requests.V1;
-using Modello.Presentation.Responses;
 
 namespace Modello.FunctionalTests.Features.Workspaces;
 
@@ -11,16 +9,16 @@ public class CreateWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
     private readonly HttpClient _client = factory.CreateClient();
 
     [Fact]
-    public async Task CreateWorkspace_ShouldReturnCreated()
+    public async Task GivenRequest_WhenCreateWorkspaceCalled_ThenReturnsCreated()
     {
-        // Arrange
+        // Given
         var createRequest = new CreateWorkspaceRequest() { Name = "Work" };
 
-        // Act 
+        // When
         var createResponse = await _client.PostAsJsonAsync("/api/v1/workspaces", createRequest);
         var createResult = await createResponse.Content.ReadFromJsonAsync<WorkspaceDto>();
 
-        // Assert
+        // Then
         Assert.Equal(HttpStatusCode.Created, createResponse.StatusCode);
         Assert.NotNull(createResult);
         Assert.NotEqual(Guid.Empty, createResult.Id);
@@ -35,20 +33,22 @@ public class CreateWorkspaceTests(CustomWebApplicationFactory factory) : IClassF
     }
 
     [Fact]
-    public async Task CreateWorkspace_WhenNameIsEmpty_ShouldReturnBadRequest()
+    public async Task GivenRequestWithEmptyId_WhenCreateWorkspaceCalled_ThenReturnsBadRequest()
     {
-        // Arrange
+        // Given
         var createRequest = new CreateWorkspaceRequest();
 
-        // Act
+        // When
         var createResponse = await _client.PostAsJsonAsync("/api/v1/workspaces", createRequest);
-        var createResult = await createResponse.Content.ReadFromJsonAsync<ErrorResponse>();
+        var createResult = await createResponse.Content.ReadFromJsonAsync<ErrorListResponse>();
 
-        // Assert
+        // Then
         Assert.Equal(HttpStatusCode.BadRequest, createResponse.StatusCode);
         Assert.NotNull(createResult);
 
         createResult.ShouldHaveValidationError()
-            .WithError("Name must not be empty.");
+            .WithType("ValidationError")
+            .WithError("Name must not be empty.")
+            .WithDetail("The name of the workspace cannot be empty or contain only white spaces.");
     }
 }

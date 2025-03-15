@@ -1,7 +1,4 @@
-﻿using Modello.Application.Common.Messaging;
-using Modello.Application.Common.Results;
-using Modello.Domain.Common.Interfaces;
-using Modello.Domain.Workspaces;
+﻿using Modello.Domain.Workspaces;
 using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Create;
@@ -15,6 +12,6 @@ internal sealed class CreateWorkspaceHandler(IWorkspaceRepository repository, IU
         await repository.AddAsync(workspace, cancellationToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new WorkspaceDto(workspace.Id, workspace.Name);
+        return Result.Created(new WorkspaceDto(workspace.Id, workspace.Name), $"/api/workspaces/{workspace.Id}");
     }
 }

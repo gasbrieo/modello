@@ -1,4 +1,6 @@
-﻿namespace Modello.Presentation.Configurations;
+﻿using Modello.Application;
+
+namespace Modello.Presentation.Configurations;
 
 public static class FluentValidationConfigs
 {
@@ -6,7 +8,7 @@ public static class FluentValidationConfigs
     {
         var assemblies = new[]
         {
-            typeof(Application.AssemblyReference).Assembly,
+            typeof(IApplicationMarker).Assembly,
         };
 
         return services.AddValidatorsFromAssemblies(assemblies);

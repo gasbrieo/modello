@@ -1,7 +1,4 @@
-﻿using Modello.Application.Common.Messaging;
-using Modello.Application.Common.Results;
-using Modello.Domain.Common.Interfaces;
-using Modello.Domain.Workspaces.Repositories;
+﻿using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Update;
 

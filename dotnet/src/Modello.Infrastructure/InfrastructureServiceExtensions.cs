@@ -1,5 +1,4 @@
 ﻿using Modello.Application.Workspaces.List;
-using Modello.Domain.Common.Interfaces;
 using Modello.Domain.Workspaces.Repositories;
 using Modello.Infrastructure.Data;
 using Modello.Infrastructure.Data.Repositories;

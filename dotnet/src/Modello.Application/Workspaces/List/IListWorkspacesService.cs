@@ -1,6 +1,4 @@
-﻿using Modello.Application.Common.Pagination;
-
-namespace Modello.Application.Workspaces.List;
+﻿namespace Modello.Application.Workspaces.List;
 
 public interface IListWorkspacesService
 {

@@ -1,6 +1,4 @@
-﻿using Modello.Domain.Common.Interfaces;
-
-namespace Modello.Domain.Workspaces;
+﻿namespace Modello.Domain.Workspaces;
 
 public sealed class Workspace(string name) : IAggregateRoot
 {

@@ -1,15 +1,13 @@
-﻿using Modello.Application.Common.Pagination;
-
-namespace Modello.Infrastructure.Data.Extensions;
+﻿namespace Modello.Infrastructure.Data.Extensions;
 
 public static class EfExtensions
 {
-    public static async Task<PagedList<T>> ToPagedListAsync<T>(this IQueryable<T> queryable, int pageNumber, int pageSize, CancellationToken cancellationToken = default) where T : class
+    public static async Task<PagedList<TValue>> ToPagedListAsync<TValue>(this IQueryable<TValue> queryable, int pageNumber, int pageSize, CancellationToken cancellationToken = default) where TValue : class
     {
-        var count = await queryable.CountAsync(cancellationToken);
+        var totalItems = await queryable.CountAsync(cancellationToken);
 
         var items = await queryable.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
 
-        return new PagedList<T>(items, count, pageNumber, pageSize);
+        return new PagedList<TValue>(pageNumber, pageSize, totalItems, items);
     }
 }

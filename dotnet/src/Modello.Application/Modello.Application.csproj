@@ -8,11 +8,11 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
-		<InternalsVisibleTo Include="Modello.UnitTests" />
+		<InternalsVisibleTo Include="Modello.Application.UnitTests" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Modello.Domain\Modello.Domain.csproj" />
+		<ProjectReference Include="..\Modello.Domain\Modello.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

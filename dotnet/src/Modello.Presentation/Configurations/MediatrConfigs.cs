@@ -1,4 +1,4 @@
-﻿using Modello.Application.Common.Behaviors;
+﻿using Modello.Application;
 using Modello.Domain;
 
 namespace Modello.Presentation.Configurations;
@@ -9,7 +9,7 @@ public static class MediatrConfigs
     {
         var assemblies = new[]
         {
-            typeof(Application.AssemblyReference).Assembly,
+            typeof(IApplicationMarker).Assembly,
             typeof(IDomainMarker).Assembly
         };
 
@@ -17,7 +17,7 @@ public static class MediatrConfigs
             .AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssemblies(assemblies!);
-                cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+                cfg.AddOpenBehavior(typeof(ValidationAsExceptionBehavior<,>));
             })
             .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
     }

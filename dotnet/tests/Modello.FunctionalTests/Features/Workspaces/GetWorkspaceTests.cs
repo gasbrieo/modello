@@ -1,8 +1,6 @@
-﻿using System.Net.Http.Json;
-using Modello.Application.Workspaces;
+﻿using Modello.Application.Workspaces;
 using Modello.FunctionalTests.TestHelpers;
 using Modello.Presentation.Requests.V1;
-using Modello.Presentation.Responses;
 
 namespace Modello.FunctionalTests.Features.Workspaces;
 
@@ -11,20 +9,20 @@ public class GetWorkspaceTests(CustomWebApplicationFactory factory) : IClassFixt
     private readonly HttpClient _client = factory.CreateClient();
 
     [Fact]
-    public async Task GetWorkspace_ShouldReturnOk()
+    public async Task GivenExistingWorkspace_WhenGetWorkspaceCalled_ThenReturnsOk()
     {
-        // Arrange
+        // Given
         var createRequest = new CreateWorkspaceRequest() { Name = "Work" };
         var createResponse = await _client.PostAsJsonAsync("/api/v1/workspaces", createRequest);
         var createResult = await createResponse.Content.ReadFromJsonAsync<WorkspaceDto>();
         Assert.Equal(HttpStatusCode.Created, createResponse.StatusCode);
         Assert.NotNull(createResult);
 
-        // Act 
+        // When
         var getResponse = await _client.GetAsync($"/api/v1/workspaces/{createResult.Id}");
         var getResult = await getResponse.Content.ReadFromJsonAsync<WorkspaceDto>();
 
-        // Assert
+        // Then
         Assert.Equal(HttpStatusCode.OK, getResponse.StatusCode);
         Assert.NotNull(getResult);
         Assert.Equal(createResult.Id, getResult.Id);
@@ -32,35 +30,41 @@ public class GetWorkspaceTests(CustomWebApplicationFactory factory) : IClassFixt
     }
 
     [Fact]
-    public async Task GetWorkspace_WhenIdIsEmpty_ShouldReturnBadRequest()
+    public async Task GivenEmptyId_WhenGetWorkspaceCalled_ThenReturnsBadRequest()
     {
-        // Arrange
+        // Given
         var id = Guid.Empty;
 
-        // Act
+        // When
         var getResponse = await _client.GetAsync($"/api/v1/workspaces/{id}");
-        var getResult = await getResponse.Content.ReadFromJsonAsync<ErrorResponse>();
+        var getResult = await getResponse.Content.ReadFromJsonAsync<ErrorListResponse>();
 
-        // Assert
+        // Then
         Assert.Equal(HttpStatusCode.BadRequest, getResponse.StatusCode);
         Assert.NotNull(getResult);
 
         getResult.ShouldHaveValidationError()
-            .WithError("Id must not be empty.");
+            .WithType("ValidationError")
+            .WithError("Id must not be empty.")
+            .WithDetail("The identifier of the workspace cannot be empty.");
     }
 
     [Fact]
-    public async Task GetWorkspace_WhenWorkspaceDoesNotExist_ShouldReturnNotFound()
+    public async Task GivenNonExistingWorkspace_WhenGetWorkspaceCalled_ThenReturnsNotFound()
     {
-        // Arrange
+        // Given
         var id = Guid.NewGuid();
 
-        // Act
+        // When
         var getResponse = await _client.GetAsync($"/api/v1/workspaces/{id}");
         var getResult = await getResponse.Content.ReadFromJsonAsync<ErrorResponse>();
 
-        // Assert
+        // Then
         Assert.Equal(HttpStatusCode.NotFound, getResponse.StatusCode);
         Assert.NotNull(getResult);
+
+        Assert.Equal("NotFound", getResult.Type);
+        Assert.Equal("Not Found", getResult.Error);
+        Assert.Equal("The requested resource was not found.", getResult.Detail);
     }
 }

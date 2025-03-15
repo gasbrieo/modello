@@ -1,7 +1,4 @@
-﻿using Modello.Application.Common.Messaging;
-using Modello.Application.Common.Results;
-using Modello.Domain.Common.Interfaces;
-using Modello.Domain.Workspaces.Events;
+﻿using Modello.Domain.Workspaces.Events;
 using Modello.Domain.Workspaces.Repositories;
 
 namespace Modello.Application.Workspaces.Delete;
@@ -19,6 +16,6 @@ internal sealed class DeleteWorkspaceHandler(IWorkspaceRepository repository, IU
             await mediator.Publish(new WorkspaceDeletedEvent(workspace.Id), cancellationToken);
         }
 
-        return Result.Success();
+        return Result.NoContent();
     }
 }

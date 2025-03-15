@@ -8,13 +8,11 @@
 
 	<ItemGroup>
 		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
-		<InternalsVisibleTo Include="Modello.UnitTests" />
+		<InternalsVisibleTo Include="Modello.Domain.UnitTests" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation" Version="11.11.0" />
-		<PackageReference Include="MediatR" Version="12.4.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2" />
+		<PackageReference Include="Modello.Foundation" Version="0.0.6" />
 	</ItemGroup>
 
 </Project>
