@@ -2,8 +2,6 @@
 
 public interface IWorkspaceRepository
 {
-    Task<IEnumerable<Workspace>> GetAllAsync(CancellationToken cancellationToken = default);
-
     Task<Workspace?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     Task AddAsync(Workspace workspace, CancellationToken cancellationToken = default);

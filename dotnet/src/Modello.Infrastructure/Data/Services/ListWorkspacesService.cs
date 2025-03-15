@@ -6,7 +6,7 @@ namespace Modello.Infrastructure.Data.Services;
 
 internal class ListWorkspacesService(AppDbContext context) : IListWorkspacesService
 {
-    public Task<PagedList<WorkspaceDto>> ListAsync(ListWorkspacesQuery query, CancellationToken cancellationToken)
+    public Task<PagedList<WorkspaceDto>> ListAsync(ListWorkspacesQuery query, CancellationToken cancellationToken = default)
     {
         return context.Workspaces
             .Select(e => new WorkspaceDto(e.Id, e.Name))

@@ -5,11 +5,6 @@ namespace Modello.Infrastructure.Data.Repositories;
 
 public sealed class WorkspaceRepository(AppDbContext context) : IWorkspaceRepository
 {
-    public async Task<IEnumerable<Workspace>> GetAllAsync(CancellationToken cancellationToken = default)
-    {
-        return await context.Workspaces.ToListAsync(cancellationToken);
-    }
-
     public Task<Workspace?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return context.Workspaces.FirstOrDefaultAsync(workspace => workspace.Id == id, cancellationToken);
