@@ -1,0 +1,31 @@
+.list-item-button {
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  margin: 0;
+  min-width: 0;
+  outline: 0;
+  padding: 0.25rem 1rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease-in-out,
+    color 200ms ease-in-out;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: rgb(0 0 0 / 10%);
+  }
+
+  &:active {
+    background-color: rgb(0 0 0 / 30%);
+  }
+}

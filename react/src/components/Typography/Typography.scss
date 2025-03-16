@@ -1,0 +1,58 @@
+.typography {
+  line-height: 1.5;
+
+  &--variant-h1 {
+    font-size: 6rem;
+    font-weight: 300;
+  }
+
+  &--variant-h2 {
+    font-size: 3.75rem;
+    font-weight: 300;
+  }
+
+  &--variant-h3 {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+
+  &--variant-h4 {
+    font-size: 2.125rem;
+    font-weight: 400;
+  }
+
+  &--variant-h5 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  &--variant-h6 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  &--variant-subtitle1 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  &--variant-subtitle2 {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &--variant-body1 {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  &--variant-body2 {
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  &--variant-caption {
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+}
