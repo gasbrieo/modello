@@ -1,0 +1,15 @@
+.list-item-secondary-action {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  .list-item-icon {
+    margin-right: 0;
+  }
+
+  .list-item-button {
+    padding: 0.25rem 0.25rem;
+    border-radius: 8px;
+  }
+}

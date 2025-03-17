@@ -4,9 +4,11 @@ import "./WorkspacesLayout.scss";
 
 const WorkspacesLayout = () => {
   return (
-    <main className="workspaces-layout">
-      <Outlet />
-    </main>
+    <div className="workspaces-layout">
+      <main className="workspaces-layout__content">
+        <Outlet />
+      </main>
+    </div>
   );
 };
 

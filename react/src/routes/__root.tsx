@@ -1,14 +1,7 @@
-import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
+import { createRootRoute } from "@tanstack/react-router";
+
+import Layout from "@/pages/Layout";
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/workspaces">Workspaces</Link>
-      </div>
-      <hr />
-      <Outlet />
-    </>
-  ),
+  component: Layout,
 });

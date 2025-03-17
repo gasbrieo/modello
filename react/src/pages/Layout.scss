@@ -1,4 +1,4 @@
-.workspaces-layout {
+.layout {
   display: flex;
   height: 100vh;
 
@@ -8,10 +8,6 @@
     flex-direction: column;
     height: 100%;
     position: relative;
-
-    .list {
-      margin-top: 0.5rem;
-    }
 
     .list-item {
       padding: 0.25rem;
@@ -24,8 +20,21 @@
     }
   }
 
+  &__sidebar-account {
+    margin-top: 0.5rem;
+
+    .list-item-button {
+      &:hover {
+        background-color: inherit;
+      }
+
+      &:active {
+        background-color: inherit;
+      }
+    }
+  }
+
   &__content {
     flex-grow: 1;
-    margin-top: 1rem;
   }
 }
