@@ -1,6 +1,6 @@
 .list-item-secondary-action {
   position: absolute;
-  right: 1rem;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
 
@@ -9,7 +9,7 @@
   }
 
   .list-item-button {
-    padding: 0.25rem 0.25rem;
-    border-radius: 8px;
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
   }
 }

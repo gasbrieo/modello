@@ -1,16 +1,16 @@
 .avatar {
   align-items: center;
   background-color: rgb(189 189 189);
-  border-radius: 8px;
+  border-radius: 50%;
   color: rgb(255 255 255);
   display: flex;
   flex-shrink: 0;
   font-size: 1.25rem;
-  height: 35px;
+  height: 26px;
   justify-content: center;
   line-height: 1;
   overflow: hidden;
   position: relative;
   user-select: none;
-  width: 35px;
+  width: 26px;
 }

@@ -1,0 +1,38 @@
+.list-workspaces {
+  padding: 1rem 0.5rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+
+    &__hero {
+      margin-bottom: 2rem;
+    }
+
+    &__list {
+      max-width: 800px;
+      width: 100%;
+      .list-item-button {
+        border-radius: 8px;
+      }
+    }
+  }
+}

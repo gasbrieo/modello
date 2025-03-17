@@ -3,33 +3,71 @@
   height: 100vh;
 
   &__sidebar {
+    padding: 1rem 0.5rem;
+    width: 240px;
+    transition: margin 0.5s ease;
+    height: 100%;
     border-right: 1px solid rgb(0 0 0 / 6%);
     display: flex;
     flex-direction: column;
-    height: 100%;
-    position: relative;
+    gap: 1rem;
 
-    .list-item {
-      padding: 0.25rem;
+    &--closed {
+      margin-left: -257px;
+    }
 
-      .list-item-button {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
+    &__account {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      &__info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: 0 0.5rem;
+        border-radius: 4px;
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        box-sizing: border-box;
+        display: inline-flex;
+        margin: 0;
+        outline: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition:
+          background-color 200ms ease-in-out,
+          color 200ms ease-in-out;
+        vertical-align: middle;
+
+        &:hover {
+          background-color: rgb(0 0 0 / 10%);
+        }
+
+        &:active {
+          background-color: rgb(0 0 0 / 30%);
+        }
       }
     }
-  }
 
-  &__sidebar-account {
-    margin-top: 0.5rem;
+    &__fixed-menu {
+      .list-item-button {
+        border-radius: 4px;
+        padding: 0.15rem 0.5rem;
+      }
+    }
 
-    .list-item-button {
-      &:hover {
-        background-color: inherit;
+    &__my-workspaces {
+      .list-subheader {
+        padding: 0.15rem 0.5rem;
       }
 
-      &:active {
-        background-color: inherit;
+      .list-item-button {
+        border-radius: 4px;
+        padding: 0.15rem 0.5rem;
       }
     }
   }

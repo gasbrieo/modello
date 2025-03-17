@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import WorkspacesIndex from "@/pages/Workspaces/WorkspacesIndex";
+import ListWorkspaces from "@/pages/Workspaces/ListWorkspaces";
 
 export const Route = createFileRoute("/workspaces/")({
-  component: WorkspacesIndex,
+  component: ListWorkspaces,
 });
