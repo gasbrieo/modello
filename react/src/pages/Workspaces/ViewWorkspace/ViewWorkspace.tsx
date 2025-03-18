@@ -1,4 +1,5 @@
 import { EllipsisIcon, ListCollapseIcon } from "lucide-react";
+import { useParams } from "@tanstack/react-router";
 
 import IconButton from "@/components/IconButton";
 import Typography from "@/components/Typography";
@@ -6,7 +7,6 @@ import Typography from "@/components/Typography";
 import { useSidebarStore } from "@/stores/sidebarStore";
 
 import "./ViewWorkspace.scss";
-import { useParams } from "@tanstack/react-router";
 
 const ViewWorkspace = () => {
   const { workspaceId } = useParams({ strict: false });
