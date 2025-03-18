@@ -25,6 +25,7 @@ const ListWorkspaces = () => {
             <ListCollapseIcon
               height="1rem"
               width="1rem"
+              color="rgba(0 0 0 / 40%)"
             />
           </IconButton>
         </div>
@@ -33,6 +34,7 @@ const ListWorkspaces = () => {
             <EllipsisIcon
               height="1rem"
               width="1rem"
+              color="rgba(0 0 0 / 40%)"
             />
           </IconButton>
         </div>

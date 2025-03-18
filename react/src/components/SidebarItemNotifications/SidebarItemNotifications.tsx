@@ -9,7 +9,6 @@ const SidebarItemNotifications = ({ ...rest }: ButtonHTMLAttributes<HTMLButtonEl
       <BellIcon
         width="1rem"
         height="1rem"
-        color="rgba(0 0 0 / 40%)"
       />
     </IconButton>
   );

@@ -17,6 +17,7 @@ const Home = () => {
             <ListCollapseIcon
               height="1rem"
               width="1rem"
+              color="rgba(0 0 0 / 40%)"
             />
           </IconButton>
         </div>
@@ -25,6 +26,7 @@ const Home = () => {
             <EllipsisIcon
               height="1rem"
               width="1rem"
+              color="rgba(0 0 0 / 40%)"
             />
           </IconButton>
         </div>

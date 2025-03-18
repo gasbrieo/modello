@@ -16,6 +16,7 @@ import SidebarItemNotifications from "@/components/SidebarItemNotifications";
 import { useSidebarStore } from "@/stores/sidebarStore";
 
 import "./AppLayout.scss";
+import classNames from "classnames";
 
 const AccountSection = () => {
   return (
@@ -90,6 +91,9 @@ const WorkspacesSection = () => {
               <ChevronDownIcon
                 width="1em"
                 height="1em"
+                className={classNames("app-sidebar__workspaces-section__toggle-icon", {
+                  "app-sidebar__workspaces-section__toggle-icon--collapsed": !isOpened,
+                })}
               />
             </ListItemIcon>
           </ListItemButton>
@@ -112,7 +116,6 @@ const WorkspacesSection = () => {
                     <HashIcon
                       width="1em"
                       height="1em"
-                      color="red"
                     />
                   </ListItemIcon>
                   <ListItemText primary={`Workspace ${id}`} />

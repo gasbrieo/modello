@@ -23,6 +23,16 @@
     gap: 0.5rem;
   }
 
+  &__workspaces-section {
+    &__toggle-icon {
+      transition: transform 0.1s ease-in-out;
+
+      &--collapsed {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
   &__item {
     &--active {
       background-color: rgb(0 0 0 / 10%);
