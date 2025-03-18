@@ -19,6 +19,7 @@
     "@floating-ui/react": "^0.27.5",
     "@tanstack/react-router": "^1.109.2",
     "classnames": "^2.5.1",
+    "framer-motion": "^12.5.0",
     "keycloak-js": "^26.1.4",
     "lucide-react": "^0.482.0",
     "overlayscrollbars-react": "^0.5.6",

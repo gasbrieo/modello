@@ -22,7 +22,6 @@ const ViewWorkspace = () => {
               width="1rem"
             />
           </IconButton>
-          <Typography variant="body2">Workspace {workspaceId}</Typography>
         </div>
         <div className="view-workspaces__header__right">
           <IconButton>

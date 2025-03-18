@@ -27,7 +27,6 @@ const ListWorkspaces = () => {
               width="1rem"
             />
           </IconButton>
-          <Typography variant="body2">My workspaces</Typography>
         </div>
         <div className="list-workspaces__header__right">
           <IconButton>

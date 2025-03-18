@@ -19,7 +19,6 @@ const Home = () => {
               width="1rem"
             />
           </IconButton>
-          <Typography variant="body2">Home</Typography>
         </div>
         <div className="home__header__right">
           <IconButton>

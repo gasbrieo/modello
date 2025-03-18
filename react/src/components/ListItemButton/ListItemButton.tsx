@@ -3,7 +3,7 @@ import { type ElementType, type ComponentPropsWithRef, type Ref, forwardRef } fr
 
 import "./ListItemButton.scss";
 
-type ListItemButtonProps<T extends ElementType = "button"> = {
+export type ListItemButtonProps<T extends ElementType = "button"> = {
   as?: T;
 } & ComponentPropsWithRef<T>;
 

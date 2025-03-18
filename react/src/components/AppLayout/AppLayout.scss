@@ -1,0 +1,35 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+
+  &__content {
+    flex-grow: 1;
+  }
+}
+
+.app-sidebar {
+  .list-item-button {
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .list-subheader {
+    padding: 0.15rem 0.5rem;
+  }
+
+  &__account-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__item {
+    &--active {
+      background-color: rgb(0 0 0 / 10%);
+
+      &:active {
+        background-color: rgb(0 0 0 / 10%);
+      }
+    }
+  }
+}
