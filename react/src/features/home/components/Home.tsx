@@ -1,7 +1,9 @@
 import { FC } from "react";
 
+import { Typography } from "@mui/material";
+
 const Home: FC = () => {
-  return <div>Home</div>;
+  return <Typography>Home</Typography>;
 };
 
 export default Home;
