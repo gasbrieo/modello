@@ -3,12 +3,12 @@ import { FC } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-const Home: FC = () => {
+const ListWorkspaces: FC = () => {
   return (
     <Box>
-      <Typography variant="h6">Home</Typography>
+      <Typography variant="h6">ListWorkspaces</Typography>
     </Box>
   );
 };
 
-export default Home;
+export default ListWorkspaces;
