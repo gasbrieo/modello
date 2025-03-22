@@ -1,14 +1,13 @@
 import { useState, type FC } from "react";
-
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import Logout from "@mui/icons-material/Logout";
 import Menu from "@mui/material/Menu";
 import ListItemText from "@mui/material/ListItemText";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const SideMenuAccount: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -70,7 +69,7 @@ const SideMenuAccount: FC = () => {
       >
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <LogoutIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Sair" />
         </MenuItem>

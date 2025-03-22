@@ -1,8 +1,7 @@
 import type { FC } from "react";
-
-import { Outlet } from "@tanstack/react-router";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { Outlet } from "@tanstack/react-router";
 
 const LayoutWorkspaces: FC = () => {
   return (

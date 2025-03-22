@@ -5,16 +5,12 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import prettierPlugin from "eslint-plugin-prettier/recommended";
 import tseslint from "typescript-eslint";
 import pluginRouter from "@tanstack/eslint-plugin-router";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 
 export default tseslint.config(
   { ignores: ["dist", "coverage"] },
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      prettierPlugin,
-      pluginRouter.configs["flat/recommended"],
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierPlugin, pluginRouter.configs["flat/recommended"], pluginQuery.configs["flat/recommended"]],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
@@ -26,10 +22,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "prettier/prettier": "error",
     },
   }

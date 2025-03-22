@@ -1,5 +1,4 @@
 import type { FC } from "react";
-
 import Box from "@mui/material/Box";
 import { Outlet } from "@tanstack/react-router";
 

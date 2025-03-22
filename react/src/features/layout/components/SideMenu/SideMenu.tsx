@@ -1,8 +1,7 @@
 import type { FC } from "react";
-
 import HomeIcon from "@mui/icons-material/Home";
-import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
 import WorkspacesIcon from "@mui/icons-material/Workspaces";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
