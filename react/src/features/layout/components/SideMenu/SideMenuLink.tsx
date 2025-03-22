@@ -1,4 +1,5 @@
 import { type FC } from "react";
+
 import { Link, type LinkProps } from "@tanstack/react-router";
 
 import SideMenuItem, { type SideMenuItemProps } from "./SideMenuItem";
